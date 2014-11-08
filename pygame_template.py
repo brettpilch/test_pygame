@@ -21,7 +21,9 @@ BLUE     = (   0,   0, 255)
 pygame.init()
  
 # Set the width and height of the screen [width, height]
-size = (700, 500)
+WIDTH = 700
+HEIGHT = 500
+size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
  
 pygame.display.set_caption("My Game")
