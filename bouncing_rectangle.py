@@ -51,7 +51,7 @@ rect_y_vel = 1
 rect_color = BLUE
 
 # Thicknesses:
-rect_thickness = 3
+rect_thickness = 0 # 0 => filled
 
 # -------- Main Program Loop -----------
 while not done:
@@ -76,7 +76,7 @@ while not done:
     # above this, or they will be erased with this command.
     screen.fill(WHITE)
 
-    pygame.draw.rect(screen, rect_color, [rect_x, rect_y, rect_width, rect_height], rect_thickness)
+    pygame.draw.rect(screen, rect_color, [rect_x, rect_y, rect_width, rect_height])
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
