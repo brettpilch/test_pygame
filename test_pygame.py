@@ -53,6 +53,19 @@ while not done:
 
     # This draws a triangle using the polygon command
     pygame.draw.polygon(screen, BLACK, [[100,100], [0,200], [200,200]], 5)
+
+    # Select the font to use, size, bold, italics
+    font = pygame.font.SysFont('Calibri', 25, True, False)
+ 
+    # Render the text. "True" means anti-aliased text.
+    # Black is the color. The variable BLACK was defined
+    # above as a list of [0, 0, 0]
+    # Note: This line creates an image of the letters,
+    # but does not put it on the screen yet.
+    text = font.render("My text",True,BLACK)
+
+    # Put the image of the text on the screen at 250x250
+    screen.blit(text, [250, 250])
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
