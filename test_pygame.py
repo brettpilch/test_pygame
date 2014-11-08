@@ -1,4 +1,6 @@
 import pygame
+import random
+import math
 pygame.init()
 BLACK = (0,0,0)
 WHITE = (255,255,255)
@@ -29,10 +31,32 @@ while not done:
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
     screen.fill(WHITE)
+
+    # Draw line:
+    # pygame.draw.line(Surface, color, start point, end point, thickness)
+    pygame.draw.line(screen, GREEN, [100,100], [600,400], 5)
+
+    # Draw rectangle:
+    # pygame.draw.rect(Surface, color, [topleft x, topleft y, width, height], thickness)
+    pygame.draw.rect(screen, RED, [100, 100, 500, 300], 3)
+
+    # Draw ellipse:
+    # pygame.draw.ellipse(Surface, color, [topleft x, topleft y, width, height], thickness)
+    pygame.draw.ellipse(screen, BLUE, [100, 100, 500, 300], 10)
+
+    # Draw an arc as part of an ellipse. Use radians to determine what
+    # angle to draw.
+    pygame.draw.arc(screen, GREEN, [100,100,250,200],  math.pi/2,     math.pi, 2)
+    pygame.draw.arc(screen, BLACK, [100,100,250,200],     0,   math.pi/2, 2)
+    pygame.draw.arc(screen, RED,   [100,100,250,200],3*math.pi/2,   2*math.pi, 2)
+    pygame.draw.arc(screen, BLUE,  [100,100,250,200],    math.pi, 3*math.pi/2, 2)
+
+    # This draws a triangle using the polygon command
+    pygame.draw.polygon(screen, BLACK, [[100,100], [0,200], [200,200]], 5)
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
  
     # --- Limit to 60 frames per second
     clock.tick(60)
-
+pygame.quit()
