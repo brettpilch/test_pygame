@@ -22,12 +22,13 @@ BLUE     = (   0,   0, 255)
 pygame.init()
  
 # Set the width and height of the screen [width, height]
-WIDTH = 700
-HEIGHT = 500
+WIDTH = 900
+HEIGHT = 675
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
+background_image = pygame.image.load("sky.jpg").convert()
  
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("Animating Snow")
  
 # Loop until the user clicks the close button.
 done = False
@@ -80,6 +81,7 @@ while not done:
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
     screen.fill((0, 0, brightness))
+    screen.blit(background_image, [0,0])
 
     # Draw snowflakes:
     for i in range(len(snow_x)):
