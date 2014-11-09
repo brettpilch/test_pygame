@@ -27,6 +27,9 @@ HEIGHT = 675
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
 background_image = pygame.image.load("sky.jpg").convert()
+fly_image = pygame.image.load("fly.png").convert()
+# Make white transparent:
+fly_image.set_colorkey(WHITE)
  
 pygame.display.set_caption("Animating Snow")
  
@@ -57,6 +60,7 @@ while not done:
             done = True # Flag that we are done so we exit this loop
  
     # --- Game logic should go here
+    mouse_pos = pygame.mouse.get_pos()
     brightness -= 0.05
     if brightness < 0:
         brightness = 0
@@ -81,6 +85,8 @@ while not done:
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
     screen.fill((0, 0, brightness))
+
+    # Draw sky background:
     screen.blit(background_image, [0,0])
 
     # Draw snowflakes:
@@ -90,6 +96,9 @@ while not done:
 
     # Draw Ground:
     pygame.draw.rect(screen, WHITE, [0, HEIGHT - ground, WIDTH, ground])
+
+    # Draw Fly:
+    screen.blit(fly_image, mouse_pos)
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
