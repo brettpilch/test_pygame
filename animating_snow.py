@@ -58,6 +58,7 @@ g = 2.8 / 60
 wind = 0.0
 ground = 10
 brightness = 255.0
+window_size = 8.
  
 # -------- Main Program Loop -----------
 while not done:
@@ -108,6 +109,16 @@ while not done:
 
     # Draw Fly:
     screen.blit(fly_image, mouse_pos)
+
+    # Draw Window:
+    pygame.draw.rect(screen, BLACK, [0, 0, WIDTH / window_size, HEIGHT])
+    pygame.draw.rect(screen, BLACK, [0, 0, WIDTH, HEIGHT / window_size])
+    pygame.draw.rect(screen, BLACK, [(window_size - 1) * WIDTH / window_size, 0,
+                                     WIDTH / window_size, HEIGHT])
+    pygame.draw.rect(screen, BLACK, [0, (window_size - 1) * HEIGHT / window_size,
+                                     WIDTH, HEIGHT / window_size])
+    pygame.draw.line(screen, BLACK, [WIDTH / 2., 0], [WIDTH / 2., HEIGHT], 10)
+    pygame.draw.line(screen, BLACK, [0, HEIGHT / 2.], [WIDTH, HEIGHT / 2.], 10)
  
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
