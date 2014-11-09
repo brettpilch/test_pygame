@@ -26,10 +26,17 @@ WIDTH = 900
 HEIGHT = 675
 size = (WIDTH, HEIGHT)
 screen = pygame.display.set_mode(size)
+
+# Load images:
 background_image = pygame.image.load("sky.jpg").convert()
 fly_image = pygame.image.load("fly.png").convert()
-# Make white transparent:
+
+# Make white background of fly image transparent:
 fly_image.set_colorkey(WHITE)
+
+# Load sounds:
+pygame.mixer.init(frequency = 44100)
+hihat_sound = pygame.mixer.Sound("808_hi_hat.ogg")
  
 pygame.display.set_caption("Animating Snow")
  
@@ -58,6 +65,8 @@ while not done:
     for event in pygame.event.get(): # User did something
         if event.type == pygame.QUIT: # If user clicked close
             done = True # Flag that we are done so we exit this loop
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            hihat_sound.play()
  
     # --- Game logic should go here
     mouse_pos = pygame.mouse.get_pos()
